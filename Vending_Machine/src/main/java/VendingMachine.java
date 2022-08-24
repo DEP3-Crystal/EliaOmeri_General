@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class VendingMachine {
     public static void main(String[] args) {
 
-        int[] change = getChange(0.26, 3.6);
+        int[] change = getChange(5, 1.09);
         Arrays.stream(change).forEach(v-> System.out.print(v + ", "));
     }
 
