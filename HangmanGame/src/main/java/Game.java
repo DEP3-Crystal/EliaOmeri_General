@@ -4,8 +4,9 @@ import java.util.Scanner;
 
 public class Game {
     static Scanner input;
+
     public static void hangman(User user) {
-        List<String> wordsToBeGuessed = List.of("pencil", "glasses", "medicine", "lesson","work","attraction","population","attitude","energy","trainer","dentist","useful");
+        List<String> wordsToBeGuessed = List.of("pencil", "glasses", "medicine", "lesson", "work", "attraction", "population", "attitude", "energy", "trainer", "dentist", "useful");
         input = new Scanner(System.in);
         System.out.println("Welcome to Hangman Game! Enjoy it!");
         //Chooses a random number from the length of the list of words to be guessed
@@ -18,10 +19,10 @@ public class Game {
         String word1 = word.replaceAll("[a-z]", "_ ");
         //play the game
         System.out.println("Start the game!");
-        startGame(word,word1,user);
+        startGame(word, word1, user);
     }
 
-    public static void startGame(String word_1, String word_2,User user) {
+    public static void startGame(String word_1, String word_2, User user) {
         // total guesses
         int totalGuesses = 0;
 
@@ -41,7 +42,7 @@ public class Game {
         boolean guessInWord;
 
         while (wrongGuesses < 6 && word_2.contains("_")) {
-            System.out.println("Player : "+ user.userName.toUpperCase()+ "\n Word that you must guess:"+word_2 + "\n");
+            System.out.println("Player : " + user.userName.toUpperCase() + "\n Word that you must guess:" + word_2 + "\n");
             int tmp = 6 - wrongGuesses;
             if (wrongGuesses != 0) {
                 System.out.println("You have " + tmp + "guesses left.");
@@ -94,8 +95,7 @@ public class Game {
                         word_2 = word3;
                     }
                 }
-                }
-            else {
+            } else {
                 System.out.println(letter + " is not present in the word.");
                 wrongGuesses++;
             }
@@ -104,9 +104,9 @@ public class Game {
         if (wrongGuesses == 6) {
             System.out.println("You lost! Maximum incorrect answers reached!");
         } else {
-            System.out.println("The word is: " + word_2 + "\nWell played " +user.userName.toUpperCase()+"!" );
+            System.out.println("The word is: " + word_2 + "\nWell played " + user.userName.toUpperCase() + "!");
             user.score++;
-            System.out.println( "You scored: "+ user.score );
+            System.out.println("You scored: " + user.score);
         }
     }
 
