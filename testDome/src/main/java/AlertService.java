@@ -3,22 +3,23 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 interface AlertDAO{
-    public UUID addAlert(Date time);
-    public Date getAlert(UUID id);
+     UUID addAlert(Date time);
+     Date getAlert(UUID id);
 }
 class AlertService {
-    private AlertDAO AlertDAOObject;
-    public AlertService(AlertDAO AlertDAOObject){
-        this.AlertDAOObject = AlertDAOObject;
-    }
     private final MapAlertDAO storage = new MapAlertDAO();
+    private AlertDAO alertDaoObject;
+    public AlertService(AlertDAO alertObject){
+        this.alertDaoObject = alertObject;
+    }
+
 
     public UUID raiseAlert() {
-        return this.AlertDAOObject.addAlert(new Date());
+        return this.alertDaoObject.addAlert(new Date());
     }
 
     public Date getAlertTime(UUID id) {
-        return this.AlertDAOObject.getAlert(id);
+        return this.alertDaoObject.getAlert(id);
     }
 }
 
